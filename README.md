@@ -17,12 +17,8 @@ A desktop application showing how yard crane and yard hoist are moving in a yard
    `call venv/scripts/activate.bat` \
    On Mac and Linux, use: \
    `source venv/bin/activate`
-4. Install the following packages;
-   ```
-   pip install PyQt5
-   pip install PyOpenGL PyOpenGL_accelerate
-   ```
-6. Run the program with the command `python main.py`.
+4. Install the required packages with the command `pip install -r requirements.txt`;
+5. Run the program with the command `python main.py`.
 
 ## Demo ##
 
