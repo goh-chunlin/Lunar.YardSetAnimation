@@ -28,7 +28,7 @@ A desktop application showing how yard crane and yard hoist are moving in a yard
 
 <img src="https://gclstorage.blob.core.windows.net/images/Lunar.YardSetAnimation-screenshot1.gif" />
 
-## Important Packages ##
+## References ##
 - [PyQt5](https://pypi.org/project/PyQt5/);
 - [Tutorial PyQt5 - OpenGL](https://www.youtube.com/watch?v=BMIHU54PsaE);
 - [PyOpenGL Installation](http://pyopengl.sourceforge.net/documentation/installation.html).
