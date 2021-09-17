@@ -4,6 +4,7 @@
     <img src="https://gclstorage.blob.core.windows.net/images/Lunar.YardSetAnimation-banner.png" />
 </div>
 
+[![Python application](https://github.com/goh-chunlin/Lunar.YardSetAnimation/actions/workflows/python-app.yml/badge.svg)](https://github.com/goh-chunlin/Lunar.YardSetAnimation/actions/workflows/python-app.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Donate](https://img.shields.io/badge/$-donate-ff69b4.svg)](https://www.buymeacoffee.com/chunlin)
 
