@@ -16,14 +16,14 @@ class OpenGLWidget(QOpenGLWidget):
         scale = (parent.display[0]/parent.canvas[0], parent.display[1]/parent.canvas[1])
 
         self.yardSets = []
-        self.yardSets.append(YardSet(scale, -1.8, 1.5, 1.2))
-        self.yardSets.append(YardSet(scale, -1.3, 1.5, 0.8))
-        self.yardSets.append(YardSet(scale, -0.8, 1.5, 0.5))
-        self.yardSets.append(YardSet(scale, -0.3, 1.5, 1.0))
-        self.yardSets.append(YardSet(scale,  0.2, 1.5, 1.2))
-        self.yardSets.append(YardSet(scale,  0.7, 1.5, 0.8))
-        self.yardSets.append(YardSet(scale,  1.2, 1.5, 0.5))
-        self.yardSets.append(YardSet(scale,  1.7, 1.5, 1.0))
+        self.yardSets.append(YardSet(scale, -1.8, 1.35, 1.2))
+        self.yardSets.append(YardSet(scale, -1.3, 1.35, 0.8))
+        self.yardSets.append(YardSet(scale, -0.8, 1.35, 0.5))
+        self.yardSets.append(YardSet(scale, -0.3, 1.35, 1.0))
+        self.yardSets.append(YardSet(scale,  0.2, 1.35, 1.2))
+        self.yardSets.append(YardSet(scale,  0.7, 1.35, 0.8))
+        self.yardSets.append(YardSet(scale,  1.2, 1.35, 0.5))
+        self.yardSets.append(YardSet(scale,  1.7, 1.35, 1.0))
 
         self.yardSets.append(YardSet(scale, -1.8, -0.4, -0.7))
         self.yardSets.append(YardSet(scale, -1.3, -0.4, -0.8))
