@@ -13,10 +13,26 @@ class OpenGLWidget(QOpenGLWidget):
         self.timer.timeout.connect(self.update)
         self.timer.start(16)
 
-        self.yardSet1 = YardSet(-0.8, 0.8, 0.74)
-        self.yardSet2 = YardSet(-0.4, 0.8, 0)
-        self.yardSet3 = YardSet(0, 0.8, 0.4)
-        self.yardSet4 = YardSet(0.4, 0.8, -0.2)
+        scale = (parent.display[0]/parent.canvas[0], parent.display[1]/parent.canvas[1])
+
+        self.yardSets = []
+        self.yardSets.append(YardSet(scale, -1.8, 1.5, 1.2))
+        self.yardSets.append(YardSet(scale, -1.3, 1.5, 0.8))
+        self.yardSets.append(YardSet(scale, -0.8, 1.5, 0.5))
+        self.yardSets.append(YardSet(scale, -0.3, 1.5, 1.0))
+        self.yardSets.append(YardSet(scale,  0.2, 1.5, 1.2))
+        self.yardSets.append(YardSet(scale,  0.7, 1.5, 0.8))
+        self.yardSets.append(YardSet(scale,  1.2, 1.5, 0.5))
+        self.yardSets.append(YardSet(scale,  1.7, 1.5, 1.0))
+
+        self.yardSets.append(YardSet(scale, -1.8, -0.4, -0.7))
+        self.yardSets.append(YardSet(scale, -1.3, -0.4, -0.8))
+        self.yardSets.append(YardSet(scale, -0.8, -0.4, -1.4))
+        self.yardSets.append(YardSet(scale, -0.3, -0.4, -0.9))
+        self.yardSets.append(YardSet(scale,  0.2, -0.4, -0.7))
+        self.yardSets.append(YardSet(scale,  0.7, -0.4, -0.8))
+        self.yardSets.append(YardSet(scale,  1.2, -0.4, -1.4))
+        self.yardSets.append(YardSet(scale,  1.7, -0.4, -0.9))
 
     def initializeGL(self):
         glEnable(GL_DEPTH_TEST)
@@ -31,10 +47,8 @@ class OpenGLWidget(QOpenGLWidget):
         glClearColor(0.8, 0.8, 0.8, 0.0)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-        self.yardSet1.draw()
-        self.yardSet2.draw()
-        self.yardSet3.draw()
-        self.yardSet4.draw()
+        for yardSet in self.yardSets:
+            yardSet.draw()
 
     def resizeGL(self, w, h):
         glViewport(0, 0, w, h)

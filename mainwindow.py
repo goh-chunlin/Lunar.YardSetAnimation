@@ -6,8 +6,10 @@ from openglwidget import OpenGLWidget
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         QMainWindow.__init__(self, parent)
+        self.display=(1200,1000)
+        self.canvas=(500,500)
         self.openglwidget = OpenGLWidget(self)
         self.setCentralWidget(self.openglwidget)
         self.setWindowTitle("Yardset Animation with OpenGL")
-        self.setGeometry(0,0,500,500)
-        self.setFixedSize(500,500)
+        self.setGeometry(0,0,self.display[0],self.display[1])
+        self.setFixedSize(self.display[0],self.display[1])
