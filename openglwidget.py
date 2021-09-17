@@ -5,6 +5,7 @@ from PyQt5.QtGui import *
 from OpenGL.GL import *
 from OpenGL.GLUT import *
 from OpenGL.GLU import *
+from time import process_time
 
 class OpenGLWidget(QOpenGLWidget):
     def __init__(self, parent=None):
@@ -12,6 +13,9 @@ class OpenGLWidget(QOpenGLWidget):
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update)
         self.timer.start(16)
+
+        self.t0 = process_time()
+        self.frameCount = 0
 
         scale = (parent.display[0]/parent.canvas[0], parent.display[1]/parent.canvas[1])
 
@@ -42,13 +46,31 @@ class OpenGLWidget(QOpenGLWidget):
         glEnable(GL_COLOR_MATERIAL)
     
     def paintGL(self):
-
         glMatrixMode(GL_PROJECTION)
         glClearColor(0.8, 0.8, 0.8, 0.0)
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
+        t1 = process_time()
+        timeElapsed = (t1 - self.t0) * 1000
+        if (timeElapsed == 0):
+            timeElapsed = 16
+        self.t0 = t1
+
+        if (self.frameCount == 0):
+            self.frameStartT0 = process_time()
+        
+        self.frameCount = self.frameCount + 1
+        
+        if (self.frameCount == 60) :
+            frameTimeElapsed = process_time() - self.frameStartT0
+            self.frameCount = 0
+            fps = 60 / frameTimeElapsed
+            if (fps > 60):
+                fps = 60
+            print("FPS: ", fps)
+
         for yardSet in self.yardSets:
-            yardSet.draw()
+            yardSet.draw(timeElapsed)
 
     def resizeGL(self, w, h):
         glViewport(0, 0, w, h)

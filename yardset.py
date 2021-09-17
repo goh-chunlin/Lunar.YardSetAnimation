@@ -8,6 +8,7 @@ class YardSet:
     seed(1)
 
     def __init__(self, scale, initX, initY, yardCraneInitY):
+        self.milliSecondPerFrame = 16
         self.scale = scale
         self.initX = self.scaleX(initX)
         self.initY = self.scaleY(initY)
@@ -16,15 +17,15 @@ class YardSet:
         self.hoistX = self.scaleX(0)
         self.hoistDirection = 1
 
-    def draw(self):
-        self.yardCrane1Y = self.yardCrane1Y + self.scaleY(0.002 * self.yardCrane1Direction)
+    def draw(self, timeElapsed):
+        self.yardCrane1Y = self.yardCrane1Y + self.scaleY(0.002 * self.yardCrane1Direction) * timeElapsed / self.milliSecondPerFrame
 
         if (self.yardCrane1Y >= self.initY - self.scaleY(0.06)):
             self.yardCrane1Direction = -1
         elif (self.yardCrane1Y < self.initY - self.scaleY(1.15)):
             self.yardCrane1Direction = 1
 
-        self.drawYardCrane(self.initX - self.scaleX(0.06), self.yardCrane1Y - self.scaleY(0.06), self.scaleX(0.37), self.scaleY(0.08))
+        self.drawYardCrane(self.initX - self.scaleX(0.06), self.yardCrane1Y - self.scaleY(0.06), self.scaleX(0.37), self.scaleY(0.08), timeElapsed)
 
         self.drawYardset(self.initX, self.initY, 10, 20)
 
@@ -77,7 +78,7 @@ class YardSet:
         glVertex3f(x, y - length - self.scaleY(0.040), 0.0)        
         glEnd()
 
-    def drawYardCrane(self, x, y, width, length):
+    def drawYardCrane(self, x, y, width, length, timeElapsed):
         glColor3f(0.39, 0.27, 0)
         glBegin(GL_LINE_LOOP)
         glVertex3f(x, y, 0.0)
@@ -96,7 +97,7 @@ class YardSet:
         glVertex3f(x + width, y + self.scaleY(0.012), 0.0) 
         glEnd()
 
-        self.hoistX = self.hoistX + self.scaleX(0.002) * self.hoistDirection
+        self.hoistX = self.hoistX + self.scaleX(0.002) * self.hoistDirection  * timeElapsed / self.milliSecondPerFrame
 
         if (self.hoistX >= width):
             self.hoistDirection = -1
