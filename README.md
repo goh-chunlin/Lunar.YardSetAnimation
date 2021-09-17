@@ -22,7 +22,7 @@ A desktop application showing how yard crane and yard hoist are moving in a yard
 
 ## Demo ##
 
-<img src="https://gclstorage.blob.core.windows.net/images/Lunar.YardSetAnimation-screenshot1.gif" />
+<img src="https://gclstorage.blob.core.windows.net/images/Lunar.YardSetAnimation-screenshot2.gif" />
 
 ## References ##
 - [PyQt5](https://pypi.org/project/PyQt5/);
